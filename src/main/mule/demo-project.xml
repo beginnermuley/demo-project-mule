@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="b05947b6-2aa5-48be-accf-c3b966b375f7" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="demo-projectFlow" doc:id="8bff7482-ab35-45d8-86a9-00d4894002c7" >
+		<http:listener doc:name="Listener" doc:id="f29c8ebd-b8cc-44f5-b545-ff22c11b6beb" config-ref="HTTP_Listener_config" path="/test"/>
+		<logger level="INFO" doc:name="START" doc:id="cf05220f-b6d4-471b-8e61-3ed37d8317f7" message="START"/>
+		<http:request method="GET" doc:name="Request" doc:id="74355478-b884-477c-898b-f0a4ea0f764a" url="https://dummy.restapiexample.com/api/v1/employees"/>
+		<logger level="INFO" doc:name="END" doc:id="b914d46b-f01e-4721-a32a-ba48b0a99656" message="END"/>
+	</flow>
+</mule>
